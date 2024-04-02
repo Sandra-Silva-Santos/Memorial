@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div>
+      <div class="btn-group">
+            <a href="{% url 'obtuario' %}" class="btn ">Consultar Obituário</a>
+      </div>
+      <div class="btn-group">
+            <a href="{% url 'admin:index' %}" class="btn ">Área Administrativa</a>
+      </div>
+</div>
+<h2>Localização do Cemitério</h2>
+<div class="map-container">
+      <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29283.52422700951!2d-46.549220713810065!3d-23.44456905701235!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef4e04c882005%3A0x212581fde2ad6dec!2sCemit%C3%A9rio%20Necr%C3%B3pole%20do%20Campo%20Santo%20(Vila%20Rio)!5e0!3m2!1spt-BR!2sbr!4v1711490274132!5m2!1spt-BR!2sbr"
+            width="650" height="230" style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+</div>
+</div>
+
+
+{% endblock %}

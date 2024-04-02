@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+<form method="GET">
+    {% csrf_token %}
+
+    <div>
+        <h2>Consulta de Obituário</h2>
+    </div>
+    <div class="btn-group">
+        <a href="{% url 'index' %}" class="btn ">Página Inicial</a>
+    </div>
+    <div class="btn-group">
+        <a href="{% url 'obtuario' %}" class="btn ">Nova Pesquisa</a>
+    </div>
+    <div>
+    </div>
+
+
+    <div class="label-group">
+        <label for="search">Nome</label>
+        <input type="text" class="form-control" placeholder="" name="search" id="search" aria-label=""
+            aria-describedby="campo de pesquisa" required>
+    </div>
+    <div class="label-group">
+        <label for="data_falecimento">Data do Falecimento:</label>
+        <input type="date" name="data_falecimento" id="data_falecimento">
+    </div>
+    <div class="label-group">
+        <label for="data_sepultamento">Data do Sepultamento:</label>
+        <input type="date" name="data_sepultamento" id="data_sepultamento">
+    </div>
+    </div>
+    <div class="link-group">
+        <button type="submit" class="btn">Pesquisar</button>
+    </div>
+</form>
+
+
+{% if results %}
+<h3>Resultados da Pesquisa</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número do Obituário</th>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>Sexo</th>
+            <th>Idade</th>
+            <th>Cor/Raça</th>
+            <th>Data do Falecimento</th>
+            <th>Data do Sepultamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for memorial in results %}
+        <tr>
+            <td>{{ memorial.num_obtuario }}</td>
+            <td>{{ memorial.falecido }}</td>
+            <td>{{ memorial.data_nascimento | date:"d/m/Y"|default:'---' }}</td>
+            <td>{{ memorial.sexo }}</td>
+            <td>{{ memorial.idade }}</td>
+            <td>{{ memorial.cor }}</td>
+            <td>{{ memorial.data_falecimento | date:"d/m/Y"|default:'---' }}</td>
+            <td>{{ memorial.data_sepultamento | date:"d/m/Y"|default:'---' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Localização</th>
+            <th>Quadra</th>
+            <th>Conjunto</th>
+            <th>Sepultura</th>
+            <th>Previsão de Exumação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for memorial in results %}
+        <tr>
+            <td>{{ memorial.localizacao }}</td>
+            <td>{{ memorial.quadra }}</td>
+            <td>{{ memorial.conjunto }}</td>
+            <td>{{ memorial.sepultura }}</td>
+            <td>{{ memorial.previsao_exumacao | date:"d/m/Y"|default:'---' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+
+{% endblock %}
