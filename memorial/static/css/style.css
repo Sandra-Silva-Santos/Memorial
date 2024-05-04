@@ -1,7 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .container {
@@ -9,53 +10,45 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
+
 }
 
-h1 {
-    text-align: center;
-    font-size: 1.7rem;
-    margin: 1rem;
+h1, h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin: 2rem;
-}
-
-h3 {
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 1rem;
-}
-
-.form-group, .btn-group, .label-group, .link-group {
+.form-group, .btn-group, .link-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;
     justify-content: center;
 }
 
-.label-group, .link-group {
+.label-group {
     display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
 }
 
 .label-group label, .label-group input {
-    flex: 1;
+    flex: auto;
     text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 1rem;
 }
 
 input[type="text"], input[type="date"], .btn {
-    padding: 0.5rem;
     margin: 0.5rem 0;
-    min-width: 300px;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
+    padding: 0.7rem;
+    font: 0.85rem sans-serif;
 }
-
 
 .btn {
     cursor: pointer;
@@ -71,61 +64,76 @@ input[type="text"], input[type="date"], .btn {
     background-color: #002fff;
 }
 
-
 a {
     text-decoration: none;
     color: black;
 }
 
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+    margin: 1rem 0;
+}
+
 table {
     width: 100%;
-    border-collapse: separate;
-    border: 1.5px solid black;
-    border-radius: 0.3rem;
     display: table;
     margin: 0 auto;
+    border: 1px solid darkgray;
+    border-radius: 0.2rem;
 }
 
 th {
+    background-color: #f0f0f0;
     border-collapse: collapse;
-    grid-template-columns: 1fr 1fr 1fr;
-    border: 2px solid black;
-    border-radius: 0.3rem;
+    border: 1px solid darkgray;
+    border-radius: 0.2rem;
     padding: 0.5rem;
     text-align: center;
 }
 
 td {
     border-collapse: collapse;
-    border: 1.5px solid black;
-    border-radius: 0.3rem;
-    font: 0.85rem sans-serif;
-    padding: 0.5rem;
+    border: 1px solid darkgray;
+    border-radius: 0.2rem;
+    font: 1rem;
     text-align: center;
 }
 
 .map-container {
     display: flex;
     justify-content: center;
-}
-
-.map-container iframe {
-    width: 650px;
-    height: 230px;
-    border-radius: 10px;
+    align-items: center;
+    width: 100%;
 }
 
 footer {
     text-align: center;
-    padding: 3rem 0;
+    padding: 1rem;
     color: black;
-    width: 100%;
 }
 
-@media (max-width: 700px) {
-    .map-container iframe {
-        width: 100%;
-        height: auto;
+iframe {
+    display: block;
+    margin: 0 auto;
+}
 
+@media screen and (max-width: 480px) {
+    h1, h2 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.8rem;
+    }
+
+    form {
+        width: 70%;
+        font-size: 0.75rem;
+    }
+
+    th, td {
+        font-size: 0.5rem;
+        padding: 0.4rem;
     }
 }
