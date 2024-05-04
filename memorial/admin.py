@@ -8,17 +8,17 @@ from .models import Memorial
 class MemorialResource(resources.ModelResource):
     class Meta:
         model = Memorial
-        fields = ('id','num_obtuario', 'falecido', 'data_nascimento', 'sexo', 'idade', 'data_falecimento', 'data_sepultamento', 'previsao_exumacao')
-        export_order = ('id','num_obtuario', 'falecido', 'data_nascimento', 'sexo', 'idade', 'data_falecimento', 'data_sepultamento', 'previsao_exumacao')
-        skip_unchanged = True
+        fields = ('id','num_obtuario', 'falecido', 'data_nascimento', 'sexo', 'idade', 'cor', 'data_falecimento', 'detalhes')
+        export_order = ('id','num_obtuario', 'falecido', 'data_nascimento', 'sexo', 'idade', 'cor', 'data_falecimento', 'detalhes')
+        
 
 
 @admin.register(Memorial)
 class MemorialAdmin(ImportExportModelAdmin):
     resource_class = MemorialResource
-    list_display = ('num_obtuario', 'falecido', 'data_nascimento', 'sexo', 'idade', 'data_falecimento', 'data_sepultamento', 'previsao_exumacao')
+    list_display = ('num_obtuario', 'falecido', 'data_nascimento', 'sexo', 'idade', 'data_falecimento')
     search_fields = ['falecido', 'num_obtuario']
-    list_filter = ['data_falecimento', 'data_sepultamento', 'localizacao', 'quadra', 'conjunto', 'sepultura']
+    list_filter = ['num_obtuario' , 'data_nascimento' ,'data_falecimento']
     
  
 

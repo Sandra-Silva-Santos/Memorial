@@ -7,15 +7,10 @@ class Memorial(models.Model):
     falecido = models.CharField(max_length=100)
     data_nascimento = models.CharField(max_length=100)
     sexo = models.CharField(max_length=100)
-    idade = models.CharField(max_length=100)
     cor = models.CharField(max_length=100)
+    idade = models.CharField(max_length=100)
     data_falecimento = models.CharField(max_length=100)
-    data_sepultamento = models.CharField(max_length=100)
-    localizacao = models.CharField(max_length=100)
-    quadra = models.CharField(max_length=100)
-    conjunto = models.CharField(max_length=100)
-    sepultura = models.CharField(max_length=100)
-    previsao_exumacao = models.CharField(max_length=100)
+    detalhes = models.CharField(max_length=300)
 
     def __str__(self):
         return self.falecido
@@ -24,4 +19,3 @@ class Memorial(models.Model):
     class Meta:
         verbose_name = 'Obituário'
         verbose_name_plural = 'Obituários'
-
