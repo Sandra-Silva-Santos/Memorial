@@ -11,88 +11,81 @@
         <h2>Consulta de Obituário</h2>
     </div>
     <div class="btn-group">
-        <a href="{% url 'index' %}" class="btn ">Página Inicial</a>
+        <a href="{% url 'index' %}" class="btn" aria-label="Botão de Início">Página Inicial</a>
     </div>
     <div class="btn-group">
         <a href="https://app.powerbi.com/groups/me/reports/6b7e5fbd-6cfd-48aa-b3a4-567e0e986213/ReportSection?ctid=dee74457-d751-4011-a5c4-44560cf8b415&experience=power-bi"
             class="btn">
-            <img src="/static/img/BI_Logo.png" alt="Power BI" width="25" height="17">Power BI</a>
+            <img src="/static/img/BI_Logo.png" alt="Botão Power BI" width="25" height="17">Power BI</a>
     </div>
     <div class="btn-group">
-        <a href="{% url 'obtuario' %}" class="btn ">Nova Pesquisa</a>
-    </div>
-
-    <div class="label">
-        <div class="label-group">
-            <label for="search">Nome</label>
-            <input type="text" class="form-control" placeholder="Digite o Nome" name="search" id="search" aria-label=""
-                aria-describedby="campo de pesquisa" required>
-        </div>
-        <div class="label-group">
-            <label for="data_nascimento">Data de Nascimento </label>
-            <input type="date" name="data_nascimento" placeholder="Data de Nascimento" id="data_nascimento"
-                aria-label="" aria-describedby="campo de pesquisa">
-        </div>
+        <a href="{% url 'obtuario' %}" class="btn" aria-label="Botão de Consulta de Obituário">Consulta de Obituário</a>
     </div>
     <div>
-        <div class="btn-group">
-            <button type="button" class="btn">Pesquisar</button>
-        </div>
     </div>
 
 
+    <div class="label-group">
+        <label for="search">Nome</label>
+        <input type="text" class="form-control" placeholder="Digite o nome aqui" name="search" id="search"
+            aria-label="search" aria-describedby="Campo de pesquisa">
+    </div>
+    <div class="label-group">
+        <label for="data_falecimento">Data do Falecimento:</label>
+        <input type="date" name="data_falecimento" id="data_falecimento" area-label="Data do Falecimento"
+            aria-describedby="Campo de data do falecimento">
+    </div>
+
+    <div class="link-group">
+        <button type="submit" class="btn" aria-label="Botão de Pesquisa">Pesquisar</button>
+    </div>
 </form>
 
-{% if results %}
 
+{% if results %}
 <h3>Resultados da Pesquisa</h3>
 
-<div class="table-container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Número do Obituário</th>
-                <th>Nome</th>
-                <th>Data de Nascimento</th>
-                <th>Data do Falecimento</th>
-                <th>Sexo</th>
-                <th>Idade</th>
-                <th>Cor</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for memorial in results %}
-            <tr>
-                <td>{{ memorial.num_obtuario }}</td>
-                <td>{{ memorial.falecido }}</td>
-                <td>{{ memorial.data_nascimento }}</td>
-                <td>{{ memorial.data_falecimento }}</td>
-                <td>{{ memorial.sexo }}</td>
-                <td>{{ memorial.idade }}</td>
-                <td>{{ memorial.cor }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número do Obituário</th>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>Data do Falecimento</th>
+            <th>Sexo</th>
+            <th>Idade</th>
+            <th>Cor/Raça</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for memorial in results %}
+        <tr>
+            <td>{{ memorial.num_obtuario }}</td>
+            <td>{{ memorial.falecido }}</td>
+            <td>{{ memorial.data_nascimento }}</td>
+            <td>{{ memorial.data_falecimento }}</td>
+            <td>{{ memorial.sexo }}</td>
+            <td>{{ memorial.idade }}</td>
+            <td>{{ memorial.cor }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Detalhes</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for memorial in results %}
-            <tr>
-                <td>{{ memorial.detalhes }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>Detalhes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for memorial in results %}
+        <tr>
+            <td>{{ memorial.detalhes }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endif %}
 {% endblock %}
